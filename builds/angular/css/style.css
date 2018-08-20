@@ -1,0 +1,19 @@
+body {
+  font-weight: 100;
+}
+
+h1, h2, h3, h4, h5, h6, p, input {
+  font-weight: 100;
+}
+
+th {
+  cursor: pointer;
+}
+
+.table {
+  margin-left: 3rem;
+}
+
+.fas {
+  margin-left: 6px;
+}

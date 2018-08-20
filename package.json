@@ -1,0 +1,10 @@
+{
+  "name": "angularjs-sortable-table",
+  "version": "0.0.1",
+  "description": "This project is a practice build using the kudvenkat youtube AngularJS tutorial",
+  "author": "Cindy Green",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-webserver": "^0.9.1"
+  }
+}
