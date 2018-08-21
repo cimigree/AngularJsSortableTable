@@ -5,51 +5,57 @@ var app = angular
                 {
                   firstName: 'Sara',
                   lastName: 'Tracey',
-                  dateOfBirth: new Date("5/5/83"),
-                  yearsEmployed: 6,
-                  salary: 50000,
-                  city: 'Pittsburgh'
+                  skills: [
+                    { name: 'listening' },
+                    { name: 'hugs' },
+                    { name: 'smiling' }
+                  ]
                 },
                 {
                   firstName: 'Shannon',
                   lastName: 'Hayward',
-                  dateOfBirth: new Date("10/22/83"),
-                  yearsEmployed: 1,
-                  salary: 42000,
-                  city: 'Pittsburgh'
+                  skills: [
+                    { name: 'style' },
+                    { name: 'loyalty' },
+                    { name: 'hard work' }
+                  ]
                 },
                 {
-                  firstName: 'Anthony',
-                  lastName: 'Ferri',
-                  dateOfBirth: new Date("4/3/71"),
-                  yearsEmployed: 14,
-                  salary: 65000,
-                  city: 'Boston'
+                  firstName: 'Steve',
+                  lastName: 'Hendricks',
+                  skills: [
+                    { name: 'writing' },
+                    { name: 'questioning conventions' },
+                    { name: 'housing repair' }
+                  ]
                 },
                 {
-                  firstName: 'Howard',
-                  lastName: 'Cosell',
-                  dateOfBirth: new Date("11/22/56"),
-                  yearsEmployed: 3,
-                  salary: 47000,
-                  city: 'Boston'
+                  firstName: 'Ronnie',
+                  lastName: 'Bincer',
+                  skills: [
+                    { name: 'donald duck voice' },
+                    { name: 'pink panther theme' },
+                    { name: 'water drop noise' }
+                  ]
                 },
                 {
-                  firstName: 'Mark',
-                  lastName: 'Austin',
-                  dateOfBirth: new Date("12/22/68"),
-                  yearsEmployed: 20,
-                  salary: 100057,
-                  city: 'Boulder'
+                  firstName: 'John',
+                  lastName: 'Green',
+                  skills: [
+                    { name: 'puffing hair' },
+                    { name: 'video editing' },
+                    { name: 'synthesis' }
+                  ]
                 },
                 {
                   firstName: 'Jennifer',
                   lastName: 'Hendricks',
-                  dateOfBirth: new Date("6/9/72"),
-                  yearsEmployed: 12,
-                  salary: 225000,
-                  city: 'Boulder'
-                },
+                  skills: [
+                    { name: 'dancing' },
+                    { name: 'math' },
+                    { name: 'cogent arguments' }
+                  ]
+                }
             ];
             $scope.employees = employees;
             $scope.sortName = "lastName";
