@@ -4,11 +4,12 @@ var app = angular
               var employees = [
                 {
                   firstName: 'Sara',
-                  lastName: 'Tracey',
+                   lastName: 'Tracey',
                   dateOfBirth: new Date("5/5/83"),
                   yearsEmployed: 6,
                   salary: 50000,
-                  city: 'Pittsburgh'
+                  city: 'Pittsburgh',
+                  gender: 1
                 },
                 {
                   firstName: 'Shannon',
@@ -16,7 +17,8 @@ var app = angular
                   dateOfBirth: new Date("10/22/83"),
                   yearsEmployed: 1,
                   salary: 42000,
-                  city: 'Pittsburgh'
+                  city: 'Pittsburgh',
+                  gender: 1
                 },
                 {
                   firstName: 'Anthony',
@@ -24,7 +26,8 @@ var app = angular
                   dateOfBirth: new Date("4/3/71"),
                   yearsEmployed: 14,
                   salary: 65000,
-                  city: 'Boston'
+                  city: 'Boston',
+                  gender: 2
                 },
                 {
                   firstName: 'Howard',
@@ -32,7 +35,8 @@ var app = angular
                   dateOfBirth: new Date("11/22/56"),
                   yearsEmployed: 3,
                   salary: 47000,
-                  city: 'Boston'
+                  city: 'Boston',
+                  gender: 3
                 },
                 {
                   firstName: 'Mark',
@@ -40,7 +44,8 @@ var app = angular
                   dateOfBirth: new Date("12/22/68"),
                   yearsEmployed: 20,
                   salary: 100057,
-                  city: 'Boulder'
+                  city: 'Boulder',
+                  gender: 2
                 },
                 {
                   firstName: 'Jennifer',
@@ -48,7 +53,8 @@ var app = angular
                   dateOfBirth: new Date("6/9/72"),
                   yearsEmployed: 12,
                   salary: 225000,
-                  city: 'Boulder'
+                  city: 'Boulder',
+                  gender: 1
                 },
             ];
             $scope.employees = employees;
@@ -64,5 +70,16 @@ var app = angular
                 return $scope.reverseSort ? "fas fa-sort-down" : "fas fa-sort-up"
               }
               return '';
+            };
+            $scope.search = function(item) {
+              if ($scope.searchText == undefined) {
+                return true;
+              }
+              else {
+                if (item.firstName.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1 || item.firstName.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1) {
+                  return true;
+                }
+              }
+              return false;
             };
           });

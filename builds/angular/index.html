@@ -14,6 +14,7 @@
 
   <script src="js/app.js"></script>
   <!-- <script src="js/controllers.js"></script> -->
+  <script src="js/filters.js"></script>
 </head>
 <body ng-controller="myController">
 
@@ -22,15 +23,7 @@
     <form class="form-inline">
       <div class="form-group">
         <label>Search Employees</label>
-        <input type="text" ng-model="searchText.firstName" class="form-control" placeholder="Search Employees"></input>
-      </div>
-      <div class="form-group">
-        <label>Search Cities</label>
-        <input type="text" ng-model="searchText.city" class="form-control" placeholder="Search Cities" />
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" ng-model="exactMatch">
-        <label class="form-check-label">Exact match</label>
+        <input type="text" ng-model="searchText" class="form-control" placeholder="Search Employees"></input>
       </div>
     </form>    
   </div>
@@ -40,19 +33,15 @@
         <td ng-click="sortData('firstName')">First Name<i ng-class="getSortClass('firstName')"></i>
         </td>
         <td ng-click="sortData('lastName')">Last Name<i ng-class="getSortClass('lastName')"></i></td>
-        <td ng-click="sortData('dateOfBirth')">Date of Birth<i ng-class="getSortClass('dateOfBirth')"></i></td>
-        <td ng-click="sortData('yearsEmployed')">Years Employed<i ng-class="getSortClass('yearsEmployed')"></i></td>
-        <td ng-click="sortData('salary')">Salary<i ng-class="getSortClass('salary')"></i></td>
+        <td ng-click="sortData('gender')">Gender<i ng-class="getSortClass('gender')"></i></td>
         <td ng-click="sortData('city')">City<i ng-class="getSortClass('city')"></i></td>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="employee in employees | filter:searchText:exactMatch | orderBy:sortName:reverseSort">
+      <tr ng-repeat="employee in employees | filter:search | orderBy:sortName:reverseSort">
         <td>{{ employee.firstName }}</td>
         <td>{{ employee.lastName }}</td>
-        <td>{{ employee.dateOfBirth | date:"MM/dd/yyyy" }}</td>
-        <td>{{ employee.yearsEmployed }}</td>
-        <td>{{ employee.salary | currency:undefined:0}}</td>
+        <td>{{ employee.gender | convertGender }}</td>
         <td>{{ employee.city }}</td>
       </tr>
     </tbody>
