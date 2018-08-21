@@ -55,6 +55,7 @@ var app = angular
             $scope.sortName = "lastName";
             $scope.reverseSort = false;
             $scope.sortClass = "";
+            $scope.viewType = "employeeTable.html";
             $scope.sortData = function(sortName) {
               $scope.reverseSort = ($scope.sortName == sortName) ? !$scope.reverseSort : false
               $scope.sortName = sortName
@@ -65,4 +66,5 @@ var app = angular
               }
               return '';
             };
+            
           });
