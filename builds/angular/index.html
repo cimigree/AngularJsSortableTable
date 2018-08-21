@@ -29,21 +29,22 @@
         <input type="text" ng-model="searchText.city" class="form-control" placeholder="Search Cities" />
       </div>
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" ng-model="exactMatch">
-        <label class="form-check-label">Exact match</label>
+        <input type="checkbox" class="form-check-input" ng-model="salaryHidden">
+        <label class="form-check-label">Hide Salary</label>
       </div>
     </form>    
   </div>
   <table class="table">
     <thead>
       <tr>
-        <td ng-click="sortData('firstName')">First Name<i ng-class="getSortClass('firstName')"></i>
-        </td>
-        <td ng-click="sortData('lastName')">Last Name<i ng-class="getSortClass('lastName')"></i></td>
-        <td ng-click="sortData('dateOfBirth')">Date of Birth<i ng-class="getSortClass('dateOfBirth')"></i></td>
-        <td ng-click="sortData('yearsEmployed')">Years Employed<i ng-class="getSortClass('yearsEmployed')"></i></td>
-        <td ng-click="sortData('salary')">Salary<i ng-class="getSortClass('salary')"></i></td>
-        <td ng-click="sortData('city')">City<i ng-class="getSortClass('city')"></i></td>
+        <th ng-click="sortData('firstName')">First Name<i ng-class="getSortClass('firstName')"></i>
+        </th>
+        <th ng-click="sortData('lastName')">Last Name<i ng-class="getSortClass('lastName')"></i></th>
+        <th ng-click="sortData('dateOfBirth')">Date of Birth<i ng-class="getSortClass('dateOfBirth')"></i></th>
+        <th ng-click="sortData('yearsEmployed')">Years Employed<i ng-class="getSortClass('yearsEmployed')"></i></th>
+        <th ng-click="sortData('salary')" ng-hide="salaryHidden">Salary<i ng-class="getSortClass('salary')"></i></th>
+        <th ng-click="sortData('salary')" ng-show="salaryHidden">Salary<i ng-class="getSortClass('salary')"></i></th>
+        <th ng-click="sortData('city')">City<i ng-class="getSortClass('city')"></i></th>
       </tr>
     </thead>
     <tbody>
@@ -52,7 +53,8 @@
         <td>{{ employee.lastName }}</td>
         <td>{{ employee.dateOfBirth | date:"MM/dd/yyyy" }}</td>
         <td>{{ employee.yearsEmployed }}</td>
-        <td>{{ employee.salary | currency:undefined:0}}</td>
+        <td ng-show="salaryHidden">######</td>
+        <td ng-hide="salaryHidden">{{ employee.salary | currency:undefined:0}}</td>
         <td>{{ employee.city }}</td>
       </tr>
     </tbody>
