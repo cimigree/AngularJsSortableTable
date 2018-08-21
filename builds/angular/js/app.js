@@ -65,4 +65,15 @@ var app = angular
               }
               return '';
             };
+            $scope.search = function(item) {
+              if ($scope.searchText == undefined) {
+                return true;
+              }
+              else {
+                if (item.firstName.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1 || item.lastName.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1) {
+                  return true
+                }
+              }
+              return false
+            };
           });

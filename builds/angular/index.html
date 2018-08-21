@@ -22,15 +22,7 @@
     <form class="form-inline">
       <div class="form-group">
         <label>Search Employees</label>
-        <input type="text" ng-model="searchText.firstName" class="form-control" placeholder="Search Employees"></input>
-      </div>
-      <div class="form-group">
-        <label>Search Cities</label>
-        <input type="text" ng-model="searchText.city" class="form-control" placeholder="Search Cities" />
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" ng-model="exactMatch">
-        <label class="form-check-label">Exact match</label>
+        <input type="text" ng-model="searchText" class="form-control" placeholder="Search Employees"></input>
       </div>
     </form>    
   </div>
@@ -47,7 +39,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="employee in employees | filter:searchText:exactMatch | orderBy:sortName:reverseSort">
+      <tr ng-repeat="employee in employees | filter:search | orderBy:sortName:reverseSort">
         <td>{{ employee.firstName }}</td>
         <td>{{ employee.lastName }}</td>
         <td>{{ employee.dateOfBirth | date:"MM/dd/yyyy" }}</td>
