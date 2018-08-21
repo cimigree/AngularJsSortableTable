@@ -2,7 +2,7 @@
 <html ng-app="myModule">
 <head>
   <meta charset="utf-8">
-  <title>AngularJS</title>
+  <Title>AngularJS</Title>
   <meta name="viewport" content="width=device-width">
 
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
@@ -19,41 +19,32 @@
 
 <div class="container-fluid">
   <div class="row justify-content-around">
-    <form class="form-inline">
+    <h1>Murder She Wrote Episode Display</h1>
+    Select Season <select ng-model="season" ng-change="getSeason($event)">
+        <option ng-repeat="number in seasons">{{number}}</option>
+    </select>
+    <!-- <form class="form-inline">
       <div class="form-group">
-        <label>Search Employees</label>
-        <input type="text" ng-model="searchText.firstName" class="form-control" placeholder="Search Employees"></input>
+        <label>Search Titles</label>
+        <input type="text" ng-model="episodes.Title" class="form-control" placeholder="Search Titles"></input>
       </div>
-      <div class="form-group">
-        <label>Search Cities</label>
-        <input type="text" ng-model="searchText.city" class="form-control" placeholder="Search Cities" />
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" ng-model="exactMatch">
-        <label class="form-check-label">Exact match</label>
-      </div>
-    </form>    
+    </form>     -->
   </div>
   <table class="table">
     <thead>
       <tr>
-        <td ng-click="sortData('firstName')">First Name<i ng-class="getSortClass('firstName')"></i>
-        </td>
-        <td ng-click="sortData('lastName')">Last Name<i ng-class="getSortClass('lastName')"></i></td>
-        <td ng-click="sortData('dateOfBirth')">Date of Birth<i ng-class="getSortClass('dateOfBirth')"></i></td>
-        <td ng-click="sortData('yearsEmployed')">Years Employed<i ng-class="getSortClass('yearsEmployed')"></i></td>
-        <td ng-click="sortData('salary')">Salary<i ng-class="getSortClass('salary')"></i></td>
-        <td ng-click="sortData('city')">City<i ng-class="getSortClass('city')"></i></td>
+        <th>Episode #</th>
+        <th>Title</th>    
+        <th>Release Date</th>  
+        <th>IMDB Rating</th>  
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="employee in employees | filter:searchText:exactMatch | orderBy:sortName:reverseSort">
-        <td>{{ employee.firstName }}</td>
-        <td>{{ employee.lastName }}</td>
-        <td>{{ employee.dateOfBirth | date:"MM/dd/yyyy" }}</td>
-        <td>{{ employee.yearsEmployed }}</td>
-        <td>{{ employee.salary | currency:undefined:0}}</td>
-        <td>{{ employee.city }}</td>
+      <tr ng-repeat="episode in episodes">
+        <td>{{ episode.Episode }}</td>
+        <td>{{ episode.Title }}</td>
+        <td>{{ episode.Released | date:"MM/dd/yyyy" }}</td>
+        <td>{{ episode.imdbRating }}</td>
       </tr>
     </tbody>
   </table>
