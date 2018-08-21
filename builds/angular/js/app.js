@@ -1,6 +1,6 @@
 var app = angular
             .module('myModule', [])
-            .controller('myController', function($scope, $http) {
+            .controller('myController', function($scope, $http, $location, $anchorScroll) {
               $scope.seasons = [1,2,3,4,5,6,7,8,9,10,11,12];
               $scope.season = 1;
               $scope.getSeason = function($event) {
@@ -9,4 +9,8 @@ var app = angular
                     $scope.episodes = response.data.Episodes
                   });
                };
+              $scope.scrollTo = function(episodeNumber) {
+                $location.hash(episodeNumber);
+                $anchorScroll();
+              }
           });

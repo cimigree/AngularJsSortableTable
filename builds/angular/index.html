@@ -30,24 +30,20 @@
       </div>
     </form>     -->
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Episode #</th>
-        <th>Title</th>    
-        <th>Release Date</th>  
-        <th>IMDB Rating</th>  
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="episode in episodes">
-        <td>{{ episode.Episode }}</td>
-        <td>{{ episode.Title }}</td>
-        <td>{{ episode.Released | date:"MM/dd/yyyy" }}</td>
-        <td>{{ episode.imdbRating }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row justify-content-around">
+  <span ng-repeat="episode in episodes">
+      <button ng-click="scrollTo(episode.Episode)"> {{episode.Episode}} # </button>
+    </span>
+  </div>
+  
+  <fieldset ng-repeat="episode in episodes" id="{{episode.Episode}}">
+    <legend>{{episode.Episode}}</legend>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{episode.Title}}</li>
+      <li class="list-group-item">{{episode.Released}}</li>
+      <li class="list-group-item">{{episode.imdbRating}}</li>
+    </ul>
+  </fieldset>
 </div>
 
 <script src="lib/jquery/jquery.min.js"></script>
