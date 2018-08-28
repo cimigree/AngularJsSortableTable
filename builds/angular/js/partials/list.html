@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row justify-content-around" >
+    <h1>Buy This Stuff</h1>
+    <select ng-model="store_id" ng-change="getStore($event)" ng-options = "store.id as store.name for store in stores">
+        <option value="">All Stores</option>
+    </select>
+      <!-- <form class="form-inline">
+      <div class="form-group">
+        <label>Search Titles</label>
+        <input type="text" ng-model="episodes.Title" class="form-control" placeholder="Search Titles"></input>
+      </div> 
+    </form> -->   
+  </div> 
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Purchased</th>
+        <th>Item</th>
+        <th>Brand</th>    
+        <th>Quantity</th>  
+        <th>Notes</th>
+        <th>Category</th>
+        <th>Edit Item</th>
+        <th>Delete Item</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in items">
+        <td><input type="checkbox" /></td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.brandName }}</td>
+        <td>{{ item.quantity}}</td>
+        <td>{{ item.note }}</td>
+        <td>{{ item.category.name}}</td>
+        <td><a href="/#/detail/{{item.id}}"<i class="fa fa-pencil" aria-hidden="true"></i></a>
+        </td>
+        <td><div ng-click="deleteItem(item)"><i class="fa fa-trash" aria-hidden="true"></i></div></td>
+        <div class="alert alert-warning col-md-4 offset-md-8" id="delete-alert" role="alert" ng-if="displayAlert">
+          {{"Are you sure you want to delete" + item.name}}
+          <button type="button" ng-click="definitelyDelete=true">
+              <span aria-hidden="true">Delete Item</span>
+          </button>
+          <button type="button" ng-click="definitelyDelete=false">
+            <span>Cancel</span>
+          </button>
+        </div>
+      </tr>
+      <div>{{displayAlert}}</div>
+    </tbody>
+  </table>
+
+</div>

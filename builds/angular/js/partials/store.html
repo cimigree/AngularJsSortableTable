@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <h2 class="offset-lg-4 col-lg-2 offset-md-2 col-md-4 col-sm" >Stores</h2>
+    <button class="btn btn-primary col-md-4 col-sm">Add Store</button>
+  </div>
+  <div class="row">
+    <div class="offset-md-4 col-md-auto col-sm-12">
+      <ul class="list-group-flush">
+        <li class="list-group-item" ng-repeat="store in stores">
+          <div ng-hide="editStore">{{ store.name }}
+            <i class="fa fa-pencil" aria-hidden="true" ng-click="editStore=true"></i>
+            <i class="fa fa-trash" aria-hidden="true" ng-click="deleteStore(store)"></i>
+          </div>
+          <form ng-show="editStore">
+            <input type="text" ng-model="store.name"/>
+            <button class="btn btn-primary" ng-click="saveStoreEdit(store)">Save Changes</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

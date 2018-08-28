@@ -17,3 +17,7 @@ th {
 .fas {
   margin-left: 6px;
 }
+
+#delete-alert {
+  width: 20%;
+}
