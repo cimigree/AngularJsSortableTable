@@ -19,32 +19,32 @@
 
 <div class="container-fluid">
   <div class="row justify-content-around">
-    <h1>Murder She Wrote Episode Display</h1>
-    Select Season <select ng-model="season" ng-change="getSeason($event)">
-        <option ng-repeat="number in seasons">{{number}}</option>
+    <h1>Buy This Stuff</h1>
+    <select ng-model="store_id" ng-change="getStore($event)" ng-options = "store.id as store.name for store in stores">
+        <option value="">All Stores</option>
     </select>
-    <!-- <form class="form-inline">
+     <!-- <form class="form-inline">
       <div class="form-group">
         <label>Search Titles</label>
         <input type="text" ng-model="episodes.Title" class="form-control" placeholder="Search Titles"></input>
-      </div>
-    </form>     -->
-  </div>
+      </div> 
+    </form> -->   
+  </div> 
   <table class="table">
     <thead>
       <tr>
-        <th>Episode #</th>
-        <th>Title</th>    
-        <th>Release Date</th>  
-        <th>IMDB Rating</th>  
+        <th>Item</th>
+        <th>Brand</th>    
+        <th>Quantity</th>  
+        <th>Notes</th>  
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="episode in episodes">
-        <td>{{ episode.Episode }}</td>
-        <td>{{ episode.Title }}</td>
-        <td>{{ episode.Released | date:"MM/dd/yyyy" }}</td>
-        <td>{{ episode.imdbRating }}</td>
+      <tr ng-repeat="item in items">
+        <td>{{ item.name }}</td>
+        <td>{{ item.brandName }}</td>
+        <td>{{ item.quantity}}</td>
+        <td>{{ item.note }}</td>
       </tr>
     </tbody>
   </table>
