@@ -9,7 +9,7 @@ myControllers.controller('ListController', function MyController($scope, $http) 
        .then(function(response) {
          $scope.stores = response.data.stores
        });
-  $scope.getStore = function($event) {
+  $scope.getStore = function() {
     if ($scope.store_id == null) {
       $http.get('http://localhost:3000/items')
       .then(function(response) {
@@ -77,6 +77,22 @@ myControllers.controller('StoreController', function MyController($scope, $http)
       alert("Something is wrong " + response)
     });
   };
+  $scope.saveNewStore = function() {
+    $http.post('http://localhost:3000/stores/',
+    {store: {
+      name: $scope.newStore
+    }
+    })
+    .success(function(status){
+      if(status=200) {
+        $scope.addStore = false;
+        alert("You have added " + $scope.newStore)
+      }
+    })
+    .error(function(response){
+        alert("Something is wrong " + response)
+    })
+  };
   $scope.deleteStore = function(storeToDelete) {
     $http.delete('http://localhost:3000/stores/' + storeToDelete.id)
     .success(function(status){
@@ -87,7 +103,7 @@ myControllers.controller('StoreController', function MyController($scope, $http)
     .error(function(response) {
       alert("Something is wrong " + response)
     });
-  }
+  };
 });
 
 myControllers.controller('CategoryController', function MyController($scope, $http) {

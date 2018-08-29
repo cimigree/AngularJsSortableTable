@@ -1,10 +1,14 @@
 <div class="container-fluid">
   <div class="row">
     <h2 class="offset-lg-4 col-lg-2 offset-md-2 col-md-4 col-sm" >Stores</h2>
-    <button class="btn btn-primary col-md-4 col-sm">Add Store</button>
+    <button class="btn btn-primary col-md-4 col-sm" ng-click="addStore=true">Add Store</button>
   </div>
   <div class="row">
     <div class="offset-md-4 col-md-auto col-sm-12">
+      <form ng-show="addStore">
+        <input type="text" ng-model="newStore" />
+        <button class="btn btn-primary" ng-click="saveNewStore(newStore)">Save New Store</button>
+      </form>
       <ul class="list-group-flush">
         <li class="list-group-item" ng-repeat="store in stores">
           <div ng-hide="editStore">{{ store.name }}
