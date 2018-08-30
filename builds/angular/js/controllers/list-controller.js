@@ -50,7 +50,7 @@ angular.module('listApp')
    // the alert is not having time to set the definitely delete
    // call a delete with confirmation of delete item (how to get item?)
       $scope.deleteOrNot = function(item) {
-        if($scope.definitelyDelete) {
+        if($scope.definitelyDelete==true) {
           apiFactory.deleteItem(item.id)
             .then(function(response) {
               console.log(reponse)

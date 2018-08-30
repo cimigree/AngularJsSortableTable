@@ -1,15 +1,18 @@
 angular.module('listApp')
        .controller('StoreController', ['$scope', 'apiFactory', function($scope, apiFactory) {
         $scope.editStore = false
-        apiFactory.getStores()
+        function getStores() {
+          apiFactory.getStores()
              .then(function(response) {
                $scope.stores = response.data.stores
              });
+        }
         $scope.saveStoreEdit = function(storeToEdit) {
           apiFactory.editStore(storeToEdit)
           .success(function(status){
             if(status = 200) {
               $scope.editStore = false;
+              getStores();
               alert("You have changed the store name");
             }
           })
@@ -22,6 +25,7 @@ angular.module('listApp')
           .success(function(status){
             if(status=200) {
               $scope.addStore = false;
+              getStores();
               alert("You have added " + $scope.newStore)
             }
           })
@@ -33,6 +37,7 @@ angular.module('listApp')
           apiFactory.deleteStore(storeToDelete.id)
           .success(function(status){
             if(status = 200) {
+              getStores();
               alert("You have deleted " + storeToDelete.name);
             }
           })
@@ -40,4 +45,5 @@ angular.module('listApp')
             alert("Something is wrong " + response)
           });
         };
+        getStores();
        }])

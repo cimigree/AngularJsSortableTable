@@ -11,11 +11,11 @@
       </form>
       <ul class="list-group-flush">
         <li class="list-group-item" ng-repeat="store in stores">
-          <div ng-hide="editStore">{{ store.name }}
+          <div ng-hide="editStore==true">{{ store.name }}
             <i class="fa fa-pencil" aria-hidden="true" ng-click="editStore=true"></i>
             <i class="fa fa-trash" aria-hidden="true" ng-click="deleteStore(store)"></i>
           </div>
-          <form ng-show="editStore">
+          <form ng-show="editStore==true">
             <input type="text" ng-model="store.name"/>
             <button class="btn btn-primary" ng-click="saveStoreEdit(store)">Save Changes</button>
           </form>

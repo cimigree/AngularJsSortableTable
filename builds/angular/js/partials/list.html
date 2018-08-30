@@ -30,7 +30,7 @@
         <td><a href="/#/detail/{{item.id}}"<i class="fa fa-pencil" aria-hidden="true"></i></a>
         </td>
         <td><div ng-click="deleteItem(item)"><i class="fa fa-trash" aria-hidden="true"></i></div></td>
-        <div class="alert alert-warning col-md-4 offset-md-8" id="delete-alert" role="alert" ng-if="displayAlert">
+        <div class="alert alert-warning col-md-4 offset-md-8" id="delete-alert" role="alert" ng-if="displayAlert==true">
           {{"Are you sure you want to delete" + item.name}}
           <button type="button" ng-click="definitelyDelete=true">
               <span aria-hidden="true">Delete Item</span>

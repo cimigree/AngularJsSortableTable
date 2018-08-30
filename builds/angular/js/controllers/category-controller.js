@@ -1,15 +1,18 @@
 angular.module('listApp')
        .controller('CategoryController', ['apiFactory', '$scope', function(apiFactory, $scope) {
         $scope.editCategory = false
-        apiFactory.getCategories()
+        function getCategories() {
+          apiFactory.getCategories()
              .then(function(response) {
                $scope.categories = response.data.categories
              });
+          }
         $scope.saveCategoryEdit = function(categoryToEdit) {
           apiFactory.editCategory(categoryToEdit)
           .success(function(status){
             if(status = 200) {
               $scope.editCategory = false;
+              getCategories();
               alert("You have changed the category name");
             }
           })
@@ -22,6 +25,7 @@ angular.module('listApp')
           .success(function(status){
             if(status=200) {
               $scope.addCategory = false;
+              getCategories();
               alert("You have added " + $scope.newCategory)
             }
           })
@@ -33,6 +37,7 @@ angular.module('listApp')
           apiFactory.deleteCategory(categoryToDelete.id)
           .success(function(status){
             if(status = 200) {
+              getCategories();
               alert("You have deleted " + categoryToDelete.name);
             }
           })
@@ -40,5 +45,5 @@ angular.module('listApp')
             alert("Something is wrong " + response)
           });
         };
-
+        getCategories();
        }])

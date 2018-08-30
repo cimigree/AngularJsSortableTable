@@ -11,11 +11,11 @@
       </form>
       <ul class="list-group-flush">
         <li class="list-group-item" ng-repeat="category in categories">
-          <div ng-hide="editCategory">{{ category.name }}
+          <div ng-hide="editCategory==true">{{ category.name }}
             <i class="fa fa-pencil" aria-hidden="true" ng-click="editCategory=true"></i>
             <i class="fa fa-trash" aria-hidden="true" ng-click="deleteCategory(category)"></i>
           </div>
-          <form ng-show="editCategory">
+          <form ng-show="editCategory==true">
             <input type="text" ng-model="category.name"/>
             <button class="btn btn-primary" ng-click="saveCategoryEdit(category)">Save Changes</button>
           </form>
