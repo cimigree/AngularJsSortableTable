@@ -1,4 +1,4 @@
-var listApp = angular.module("listApp", ["ngRoute", "myControllers"]);
+var listApp = angular.module("listApp", ["ngRoute"]);
 
 listApp.config(["$routeProvider", function($routeProvider) {
   $routeProvider
@@ -6,7 +6,7 @@ listApp.config(["$routeProvider", function($routeProvider) {
       templateUrl: "js/partials/list.html",
       controller: "ListController"
     })
-    .when("/items", {
+    .when("/items/:all", {
       templateUrl: "js/partials/list.html",
       controller: "ListController"
     })

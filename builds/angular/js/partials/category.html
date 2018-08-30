@@ -1,16 +1,24 @@
 <div class="container-fluid">
   <div class="row">
     <h2 class="offset-lg-4 col-lg-2 offset-md-2 col-md-4 col-sm" >Categories</h2>
-    <button class="btn btn-primary col-md-4 col-sm">Add Category</button>
+    <button class="btn btn-primary col-md-4 col-sm" ng-click="addCategory=true">Add Category</button>
   </div>
   <div class="row">
     <div class="offset-md-4 col-md-auto col-sm-12">
+      <form ng-show="addCategory">
+        <input type="text" ng-model="newCategory" />
+        <button class="btn btn-primary" ng-click="saveNewCategory(newCategory)">Save New Category</button>
+      </form>
       <ul class="list-group-flush">
         <li class="list-group-item" ng-repeat="category in categories">
-          <div>{{ category.name }}
-            <i class="fa fa-pencil" aria-hidden="true" ng-click="displayCategory=true"></i>
+          <div ng-hide="editCategory">{{ category.name }}
+            <i class="fa fa-pencil" aria-hidden="true" ng-click="editCategory=true"></i>
             <i class="fa fa-trash" aria-hidden="true" ng-click="deleteCategory(category)"></i>
           </div>
+          <form ng-show="editCategory">
+            <input type="text" ng-model="category.name"/>
+            <button class="btn btn-primary" ng-click="saveCategoryEdit(category)">Save Changes</button>
+          </form>
         </li>
       </ul>
     </div>
