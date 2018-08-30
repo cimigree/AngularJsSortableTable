@@ -23,6 +23,7 @@ myControllers.controller('ListController', function MyController($scope, $http) 
         });
     }
    };
+   // make a function to set purchased to true when it is checked
 
    // the alert is not having time to set the definitely delete
    // call a delete with confirmation of delete item (how to get item?)
@@ -49,14 +50,16 @@ myControllers.controller('ListController', function MyController($scope, $http) 
 });
 
 myControllers.controller('ListItemController', function MyController($scope, $http, $routeParams) {
-  // what happens if this is a new one?
-  $http.get('http://localhost:3000/items/' + $routeParams.itemId).then(function(response) {
+  if($routeParams.itemId !== "new") {
+    $http.get('http://localhost:3000/items/' + $routeParams.itemId).then(function(response) {
     $scope.item = response.data.item;
   });
+  }
 });
 
 myControllers.controller('StoreController', function MyController($scope, $http) {
   $scope.editStore = false
+  console.log(`in the controller this is editStore: ${$scope.editStore}`)
   $http.get('http://localhost:3000/stores')
        .then(function(response) {
          $scope.stores = response.data.stores
@@ -70,6 +73,7 @@ myControllers.controller('StoreController', function MyController($scope, $http)
     .success(function(status){
       if(status = 200) {
         $scope.editStore = false;
+        console.log($scope.editStore)
         alert("You have changed the store name");
       }
     })

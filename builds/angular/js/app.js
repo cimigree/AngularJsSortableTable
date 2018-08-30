@@ -6,6 +6,10 @@ listApp.config(["$routeProvider", function($routeProvider) {
       templateUrl: "js/partials/list.html",
       controller: "ListController"
     })
+    .when("/items", {
+      templateUrl: "js/partials/list.html",
+      controller: "ListController"
+    })
     .when("/detail/:itemId", {
       templateUrl: "js/partials/list-item-detail.html",
       controller: "ListItemController"
